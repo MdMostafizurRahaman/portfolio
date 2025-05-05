@@ -7,7 +7,7 @@ import ExperienceSection from "@/components/ExperienceSection.jsx";
 import GitHubSection from "@/components/GitHubSection.jsx";
 import ContactSection from "@/components/ContactSection.jsx";
 import Footer from "@/components/Footer.jsx";
-import { useScrollSpy } from "@/hooks/use-scroll-spy";
+import { useScrollSpy } from "@/hooks/use-scroll-spy.jsx";
 
 export default function Home() {
   const activeSection = useScrollSpy(["home", "about", "skills", "projects", "experience", "contact"], 100);

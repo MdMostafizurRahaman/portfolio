@@ -1,4 +1,5 @@
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 import SectionTitle from "@/components/ui/section-title.jsx";
 import SkillBar from "@/components/ui/skill-bar.jsx";
