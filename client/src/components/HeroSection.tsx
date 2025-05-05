@@ -98,9 +98,11 @@ export default function HeroSection() {
           <div className="relative w-60 h-60 md:w-80 md:h-80">
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-full blur-md opacity-30"></div>
             <div className="absolute inset-2 rounded-full bg-white flex items-center justify-center overflow-hidden">
-              <div className="bg-gradient-to-br from-primary/20 to-accent/20 w-full h-full flex items-center justify-center">
-                <span className="text-6xl text-primary">MR</span>
-              </div>
+              <img 
+                src="/profile.jpg" 
+                alt="Md Mostafizur Rahaman" 
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </motion.div>

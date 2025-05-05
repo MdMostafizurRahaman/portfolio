@@ -5,11 +5,19 @@ import TimelineItem from "@/components/ui/timeline-item";
 export default function ExperienceSection() {
   const timelineItems = [
     {
+      date: "Present",
+      title: "Intern",
+      organization: "Ithra, Aramco",
+      description: "Working on a Policy tracker project, applying software engineering skills in a professional environment.",
+      position: "left",
+      category: "Experience"
+    },
+    {
       date: "2021 - Present",
       title: "BSc in Software Engineering",
       organization: "University of Dhaka",
       description: "CGPA: 3.48/4.00 (up to 5th semester)\nLast semester: 3.83",
-      position: "left",
+      position: "right",
       category: "Education"
     },
     {
