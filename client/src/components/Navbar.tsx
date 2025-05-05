@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { scrollToElement } from "@/lib/utils";
+import ThemeToggle from "@/components/ui/theme-toggle";
 
 interface NavbarProps {
   activeSection: string | null;
