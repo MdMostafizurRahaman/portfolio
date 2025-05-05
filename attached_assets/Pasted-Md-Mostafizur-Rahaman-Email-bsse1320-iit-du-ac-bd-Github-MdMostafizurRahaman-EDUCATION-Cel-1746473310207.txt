@@ -1,0 +1,43 @@
+Md Mostafizur Rahaman
+ Email: bsse1320@iit.du.ac.bd 
+Github: MdMostafizurRahaman 
+EDUCATION
+ Cell Phone: +8801517809545 
+LinkedIn: Md. Mostafizur Rahaman
+ Dr. Muhammad Shahidullah Hall, University of Dhaka
+ University of Dhaka 
+BSc in Software Engineering  
+(CGPA(upto 5th semester) 3.48/4.00)Last semester 3.83          
+PROJECTS
+ Chuadanga Govt’ College, Chuadanga
+ HSC GPA: 5.00
+ Gomoku Game AI: React.js(Gomoku-AI )
+ Developed a 10x10 Gomoku game with AI versus player functionality. The AI makes optimal moves, considering 
+winning conditions and preventing overline situations. Turn-based gameplay allows the player to compete against 
+the AI. Added player vs AI functionality to enhance the game experience.
+ Stack Over Flow: React.js Node.js, MongoDB, Express.js (stack overflow)
+ Built a MERN-based app with user registration, login, post management, and JWT authentication. Added 
+notification cleanup and MinIO for code snippet storage, transitioning to a distributed setup.
+ IPOS: React.js Node.js, MongoDB, Express.js (IPOS SPL-ll)
+ Developed a web application to streamline the internship placement process for BSSE 4th-year students, with 
+company listings and student applications. Designed a RESTful backend for managing CVs, skillsets, CGPA, and 
+interview allocations, along with email notifications and formal letter generation for HR.
+ Chat Server:  C++( Chat server SPL1)
+ Developed a mini messenger app with user registration, secure password encryption, and login system with retry 
+limits. Enabled user connectivity for individual and group chats, and ensured data security by encrypting all 
+transmitted data with AES.
+ AWARDS & ACHIEVEMENT
+ ● District Champion at Creative Talent Hunt Competition (Math & Computer).
+ ● National Champion at Bangladesh Red Crescent Society (Essay Writing).
+ ACTIVITIES AND LEADERSHIP
+ Competitive Programming Contest
+ Participated in 50+ programming contests on platforms like CodeForces, LeetCode, HackerRank, and CodeChef.
+ Solved over 600 problems across various platforms.
+ ICT and Database Management Associate
+ Student Promotion & Support Unit, University of Dhaka(May 2024 - December 2024)
+ Collaborated with a team to offer part-time placement services, talent acquisition, and skill development 
+programs for students. Optimized ICT and database management systems to enhance service delivery and create 
+more opportunities for students.
+ SKILLS
+  Language: C, C++, JavaScript, Java (in order of proficiency)
+ Technology / Tools: Git, React, Node.js, Express.js, MongoDB, Github, HTML, CSS, Sqlite3, Kali Linux, WireShark
