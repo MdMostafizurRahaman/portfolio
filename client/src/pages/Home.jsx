@@ -1,15 +1,15 @@
-import Navbar from "@/components/Navbar.jsx";
-import HeroSection from "@/components/HeroSection.jsx";
-import AboutSection from "@/components/AboutSection.jsx";
-import SkillsSection from "@/components/SkillsSection.jsx";
-import ProjectsSection from "@/components/ProjectsSection.jsx";
-import ExperienceSection from "@/components/ExperienceSection.jsx";
-import GitHubSection from "@/components/GitHubSection.jsx";
-import ContactSection from "@/components/ContactSection.jsx";
-import Footer from "@/components/Footer.jsx";
-import { useScrollSpy } from "@/hooks/use-scroll-spy.jsx";
-import { usePortfolioData } from "@/hooks/use-portfolio-data.js";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert.jsx";
+import Navbar from "../components/Navbar.jsx";
+import HeroSection from "../components/HeroSection.jsx";
+import AboutSection from "../components/AboutSection.jsx";
+import SkillsSection from "../components/SkillsSection.jsx";
+import ProjectsSection from "../components/ProjectsSection.jsx";
+import ExperienceSection from "../components/ExperienceSection.jsx";
+import GitHubSection from "../components/GitHubSection.jsx";
+import ContactSection from "../components/ContactSection.jsx";
+import Footer from "../components/Footer.jsx";
+import { useScrollSpy } from "../hooks/use-scroll-spy.jsx";
+import { usePortfolioData } from "../hooks/use-portfolio-data.js";
+import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert.jsx";
 import { AlertCircle, Loader2 } from "lucide-react";
 
 export default function Home() {

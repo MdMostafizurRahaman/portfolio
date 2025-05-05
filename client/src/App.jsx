@@ -1,9 +1,9 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Route, Switch } from "wouter";
-import { Toaster } from "@/components/ui/toaster.jsx";
+import { Toaster } from "./components/ui/toaster.jsx";
 import { queryClient } from "./lib/queryClient.js";
-import Home from "@/pages/Home.jsx";
-import NotFound from "@/pages/not-found.jsx";
+import Home from "./pages/Home.jsx";
+import NotFound from "./pages/not-found.jsx";
 import { useEffect, useState } from "react";
 
 function App() {
