@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { scrollToElement } from "@/lib/utils";
-import AnimatedBackground from "@/components/ui/animated-background.jsx";
-import TypedText from "@/components/ui/typed-text.jsx";
+import { scrollToElement } from "../lib/utils";
+import AnimatedBackground from "./ui/animated-background.jsx";
+import TypedText from "./ui/typed-text.jsx";
 
 export default function HeroSection() {
   return (
