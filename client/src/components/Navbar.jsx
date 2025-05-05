@@ -1,101 +1,146 @@
-import { useEffect, useState } from "react";
-import { scrollToElement } from "@/lib/utils";
-import ThemeToggle from "@/components/ui/theme-toggle.jsx";
+import { useState, useEffect } from "react";
+import { Link } from "wouter";
+import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
+import { personalInfo } from "../data/portfolio-data";
 
-export default function Navbar({ activeSection }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [activeSection, setActiveSection] = useState("home");
+  const [theme, setTheme] = useState("light");
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
+  // Handle theme switching
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    document.documentElement.classList.toggle("dark", savedTheme === "dark");
   }, []);
 
-  const navigationLinks = [
-    { name: "Home", id: "home" },
-    { name: "About", id: "about" },
-    { name: "Skills", id: "skills" },
-    { name: "Projects", id: "projects" },
-    { name: "Experience", id: "experience" },
-    { name: "Contact", id: "contact" },
-  ];
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
 
-  const navLinkClasses = (id) =>
-    `nav-link font-medium transition-colors ${activeSection === id ? "text-primary" : "hover:text-primary"}`;
+  // Handle scroll events
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+      
+      // Determine active section based on scroll position
+      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 80,
+        behavior: "smooth"
+      });
+      setIsOpen(false);
+    }
+  };
 
   return (
-    <nav className={`fixed w-full bg-white dark:bg-gray-900 bg-opacity-90 dark:bg-opacity-90 shadow-md backdrop-blur-sm z-50 transition-all duration-300 ${isScrolled ? "py-2 shadow-lg" : "py-3"}`}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="text-xl font-bold text-primary font-poppins">
-          <span className="text-dark dark:text-white">Md.</span>Mostafizur
-        </div>
-
-        <div className="hidden md:flex items-center space-x-6">
-          {navigationLinks.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={navLinkClasses(link.id)}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToElement(link.id);
-              }}
-            >
-              {link.name}
+    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      scrollPosition > 20 ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+    }`}>
+      <div className="container mx-auto px-6 py-4">
+        <nav className="flex items-center justify-between">
+          <Link href="/">
+            <a className="text-2xl font-bold text-primary font-poppins hover:text-primary/80 transition-colors">
+              {personalInfo.name.split(' ')[0]} <span className="text-accent">.</span>
             </a>
-          ))}
-          
-          <div className="ml-4">
-            <ThemeToggle />
-          </div>
-        </div>
+          </Link>
 
-        <div className="md:hidden flex items-center space-x-4">
-          <ThemeToggle />
-          <button
-            className="text-dark dark:text-white focus:outline-none"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            <i className={`fas ${isMobileMenuOpen ? "fa-times" : "fa-bars"} text-2xl`}></i>
-          </button>
-        </div>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <ul className="flex space-x-6">
+              {["home", "about", "skills", "projects", "experience", "contact"].map((item) => (
+                <li key={item}>
+                  <button
+                    onClick={() => scrollToSection(item)}
+                    className={`capitalize text-sm font-medium hover:text-primary transition-colors ${
+                      activeSection === item 
+                        ? "text-primary border-b-2 border-primary" 
+                        : "text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? <FiMoon size={18} /> : <FiSun size={18} />}
+            </button>
+          </div>
+
+          {/* Mobile Navigation Toggle */}
+          <div className="flex items-center space-x-4 md:hidden">
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? <FiMoon size={18} /> : <FiSun size={18} />}
+            </button>
+            
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <FiX size={18} /> : <FiMenu size={18} />}
+            </button>
+          </div>
+        </nav>
       </div>
 
-      <div
-        className={`md:hidden bg-white dark:bg-gray-800 bg-opacity-95 dark:bg-opacity-95 overflow-hidden transition-all duration-300 ${
-          isMobileMenuOpen ? "max-h-96" : "max-h-0"
+      {/* Mobile Navigation Menu */}
+      <div 
+        className={`md:hidden absolute w-full bg-white dark:bg-gray-900 shadow-lg transition-all duration-300 ${
+          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col p-4 space-y-3">
-          {navigationLinks.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={`py-2 font-medium transition-colors ${
-                activeSection === link.id ? "text-primary" : "hover:text-primary"
-              }`}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToElement(link.id);
-                setIsMobileMenuOpen(false);
-              }}
-            >
-              {link.name}
-            </a>
+        <ul className="flex flex-col px-6 py-4 space-y-4">
+          {["home", "about", "skills", "projects", "experience", "contact"].map((item) => (
+            <li key={item}>
+              <button
+                onClick={() => scrollToSection(item)}
+                className={`capitalize text-base font-medium hover:text-primary transition-colors block w-full text-left py-2 ${
+                  activeSection === item 
+                    ? "text-primary" 
+                    : "text-gray-700 dark:text-gray-300"
+                }`}
+              >
+                {item}
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-    </nav>
+    </header>
   );
 }
