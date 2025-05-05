@@ -94,7 +94,7 @@
   }
 
   body {
-    @apply font-inter bg-light text-dark scroll-smooth;
+    @apply font-inter bg-light text-dark scroll-smooth dark:bg-gray-900 dark:text-gray-100;
   }
 
   html {

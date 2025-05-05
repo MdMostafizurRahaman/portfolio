@@ -3,7 +3,7 @@ import SectionTitle from "@/components/ui/section-title";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <SectionTitle title="About" highlight="Me" />
         
@@ -15,7 +15,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-white p-8 rounded-lg space-y-6">
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-lg space-y-6">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
                   <i className="fas fa-user-graduate text-primary text-xl"></i>
