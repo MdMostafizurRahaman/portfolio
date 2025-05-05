@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import SectionTitle from "@/components/ui/section-title";
+import SectionTitle from "@/components/ui/section-title.jsx";
 
 export default function AboutSection() {
   return (
